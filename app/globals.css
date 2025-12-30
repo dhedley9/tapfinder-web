@@ -1,0 +1,79 @@
+:root{
+    --max-width: 1100px;
+    --orange: #f1a10d;
+    --dark-orange: #df9a1a;
+    --black: #000000;
+    --grey: #e4e4e4;
+}
+
+.tf-content-wrap{
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/*----------------------------------------
+# Header
+----------------------------------------*/
+
+.tf-header{
+    font-size: 18px;
+    padding: 20px;
+}
+
+.tf-header .tf-content-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+
+.tf-header .tf-header-logo img{
+    width: 200px;
+    height: auto;
+}
+
+/* Menu */
+
+.tf-header .tf-header-menu ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.tf-header .tf-header-menu ul a{
+    border-radius: 30px;
+    padding: 12px 17px;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.tf-header .tf-header-menu ul a:hover{
+    background-color: var(--grey);
+}
+
+/* Actions */
+
+.tf-header .tf-header-actions{
+    width: 200px;
+    text-align: right;
+}
+
+/*----------------------------------------
+# Buttons
+----------------------------------------*/
+
+.tf-button{
+    background-color: var(--orange);
+    border-radius: 30px;
+    padding: 12px 17px;
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.tf-button:hover{
+    background-color: var(--dark-orange);
+}
