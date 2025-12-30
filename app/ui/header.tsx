@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { googleSans } from './fonts';
 
 export default function Header() {
 
@@ -20,7 +19,7 @@ export default function Header() {
     ];
 
     return (
-        <header className={ 'tf-header ' + googleSans.className }>
+        <header className="tf-header">
             <div className="tf-content-wrap">
                 <Link href={`/`} className="tf-header-logo">
                     <Image
