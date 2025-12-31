@@ -5,6 +5,7 @@
     --black: #000000;
     --grey: #e4e4e4;
     --dark-grey: #a2a2a2;
+    --red: #ff0000;
 }
 
 *{
@@ -176,4 +177,27 @@
 
 .tf-auth-page .tf-auth-page-signup .tf-auth-page-signup-link:hover{
     text-decoration: underline;
+}
+
+/*----------------------------------------
+# Error Notices
+----------------------------------------*/
+
+.tf-error-notice{
+    display: flex;
+    align-items: center;
+    background-color: var(--red);
+    color: #ffffff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.tf-error-notice svg{
+    width: 30px;
+    margin-right: 5px;
+}
+
+.tf-error-notice svg path{
+    fill: #ffffff;
 }
