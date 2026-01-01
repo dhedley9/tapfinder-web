@@ -1,26 +1,33 @@
 'use client';
 
 import { useActionState } from 'react';
-import { loginHandler } from '@/app/lib/actions';
+import { loginHandler, LoginActionState } from '@/app/lib/actions';
 import Link from 'next/link';
 
 import ErrorNotice from '@/app/ui/error-notice';
 
 export default function LoginForm() {
 
-    const [ errorMessage, action, isPending] = useActionState( loginHandler, undefined );
+    const initialState: LoginActionState = {
+        error: null,
+        values: {
+            email: '',
+        },
+    };
+
+    const [ formResult, action, isPending] = useActionState( loginHandler, initialState );
 
     return (
         <form className="tf-auth-page-form" action={action}>
 
-            { errorMessage && (
-                <ErrorNotice message={errorMessage} />
+            { formResult?.error && (
+                <ErrorNotice message={ formResult.error } />
             )}
 
             <div className="tf-auth-page-form-field">
                 <label htmlFor="login_email">Email Address:</label>
                 
-                <input type="text" id="login_email" name="email" required={true} autoComplete="on" />
+                <input type="text" id="login_email" name="email" required={true} defaultValue={ formResult.values.email } autoComplete="on" />
             </div>
 
             <div className="tf-auth-page-form-field">
