@@ -1,12 +1,17 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
-import { z } from "zod";
+import { z } from 'zod';
+
+import { AuthApi } from '@/app/lib/api/AuthApi';
+import { ApiError, HttpError, NetworkError } from '@/app/lib/api/errors';
+
  
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
+
             async authorize( credentials ) {
 
                 const credentialsTemplate = {
@@ -20,34 +25,13 @@ export const { auth, signIn, signOut } = NextAuth({
 
                     const { email, password } = parsedCredentials.data;
 
-                    const url = process.env.API_URL + '/auth/login';
+                    try{
+                        const api = new AuthApi();
 
-                    const args = {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            email,
-                            password
-                        })
-                    }
-
-                    try {
-
-                        const response: Response = await fetch( url, args );
-                        const body = await response.json();
-
-                        console.log( response );
-                        console.log( body );
-
-                        if( response.status !== 200 ) {
-                            console.log( response.statusText );
-
-                            // TODO: Custom error type
-                            throw new Error( 'Something went wrong' );
-                        }
+                        const response = await api.login( email, password );
 
                         const user = {
-                            token: body.token,
+                            token: response.token,
                             firstName: 'TODO',
                             lastName: 'TODO',
                             email: 'TODO'
@@ -56,10 +40,12 @@ export const { auth, signIn, signOut } = NextAuth({
                         return user;
                     }
                     catch( error ) {
-                        console.log( 'Fetch() error' );
+                        
+                        if( error instanceof ApiError ) {
+                            return null;
+                        }
 
-                        // TODO: Custom error type
-                        throw new Error( 'Something went wrong' );
+                        throw error;
                     }
                 }
                 
