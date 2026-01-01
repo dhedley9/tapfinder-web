@@ -1,7 +1,7 @@
 'use client';
 
 import { useActionState } from 'react';
-import { loginHandler, LoginActionState } from '@/app/lib/actions';
+import { loginHandler, LoginActionState } from '@/app/lib/actions/login-handler';
 import Link from 'next/link';
 
 import ErrorNotice from '@/app/ui/error-notice';
