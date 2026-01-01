@@ -1,12 +1,14 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { loginHandler, LoginActionState } from '@/app/lib/actions';
 import Link from 'next/link';
 
 import ErrorNotice from '@/app/ui/error-notice';
 
 export default function LoginForm() {
+
+    const [ showPassword, setShowPassword ] = useState( false );
 
     const initialState: LoginActionState = {
         error: null,
@@ -33,7 +35,10 @@ export default function LoginForm() {
             <div className="tf-auth-page-form-field">
                 <label htmlFor="login_password">Password:</label>
                 
-                <input type="text" id="login_password" name="password" required={true}  />
+                <div className="tf-auth-page-password-wrap">
+                    <input type={ showPassword ? 'text' : 'password' }  id="login_password" name="password" required={true}  />
+                    <button type="button" onClick={ () => setShowPassword( ( prev ) => !prev ) }>{ showPassword ? 'Hide' : 'Show' }</button>
+                </div>
             </div>
 
             <Link className="tf-auth-page-forgot" href={`/login/reset`}>Forgotten your password?</Link>

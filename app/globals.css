@@ -152,6 +152,28 @@
     text-decoration: underline;
 }
 
+/** Password Field **/
+
+.tf-auth-page-form .tf-auth-page-password-wrap{
+    position: relative;
+}
+
+.tf-auth-page-form .tf-auth-page-password-wrap input[type="text"],
+.tf-auth-page-form .tf-auth-page-password-wrap input[type="password"]{
+    padding-right: 45px;
+}
+
+.tf-auth-page-form .tf-auth-page-password-wrap button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.4;
+}
+
 /* Sign Up */
 
 .tf-auth-page .tf-auth-page-signup {
