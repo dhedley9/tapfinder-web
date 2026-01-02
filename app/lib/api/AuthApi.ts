@@ -22,4 +22,13 @@ export class AuthApi extends TapFinderAPI{
 
         return response;
     }
+
+    async register( email: string, password: string, firstName: string, lastName: string ) {
+
+        const args = { email, password, firstName, lastName };
+
+        const response = await this.request( '/register', 'POST', args );
+
+        return response;
+    }
 }

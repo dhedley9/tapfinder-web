@@ -1,3 +1,11 @@
+export type APIErrorMessage = {
+    type: string;
+    value: string;
+    msg: string;
+    path: string;
+    location: string;
+};
+
 export class NetworkError extends Error {
 
     constructor( originalError: unknown ) {
@@ -25,12 +33,22 @@ export class HttpError extends Error {
 }
 
 export class ApiError extends HttpError {
+
+    public readonly messages: string[];
     
-    constructor( status: number, statusText: string,  message: string ) {
+    constructor( status: number, statusText: string,  message: string|string[] ) {
 
         super( status, statusText );
 
         this.name = "ApiError";
-        this.message = message;
+
+        if( typeof message === 'string' ) {
+            this.message  = message;
+            this.messages = [ message ];
+        }
+        else{
+            this.message  = message[0];
+            this.messages = message;
+        }
     }
 }

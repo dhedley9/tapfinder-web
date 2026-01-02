@@ -1,4 +1,4 @@
-import { ApiError, HttpError, NetworkError } from "./errors";
+import { ApiError, HttpError, NetworkError, APIErrorMessage } from "./errors";
 
 export abstract class TapFinderAPI{
 
@@ -33,6 +33,15 @@ export abstract class TapFinderAPI{
         if( response.status < 200 || response.status >= 300 ) {
 
             if( response_body ) {
+
+                if( 'errors' in response_body ) {
+
+                    const errors: APIErrorMessage[] = response_body.errors;
+                    const messages: string[] = errors.map( error => error.msg );
+
+                    throw new ApiError( response.status, response.statusText, messages );
+                }
+                
                 throw new ApiError( response.status, response.statusText, response_body.message );
             }
             else{
