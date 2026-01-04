@@ -18,7 +18,7 @@ export class AuthApi extends TapFinderAPI{
 
         const args = { email, password };
         
-        const response: LoginResponse = await this.request( '/login', 'POST', args );
+        const response: LoginResponse = await this.post( '/login', args );
 
         return response;
     }
@@ -27,7 +27,7 @@ export class AuthApi extends TapFinderAPI{
 
         const args = { email, password, firstName, lastName };
 
-        const response = await this.request( '/register', 'POST', args );
+        const response = await this.post( '/register', args );
 
         return response;
     }
