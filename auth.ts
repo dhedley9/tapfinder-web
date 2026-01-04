@@ -4,9 +4,9 @@ import { authConfig } from './auth.config';
 import { z } from 'zod';
 
 import { AuthApi } from '@/app/lib/api/AuthApi';
+import { AccountApi } from '@/app/lib/api/AccountApi';
 import { ApiError, HttpError, NetworkError } from '@/app/lib/api/errors';
 
- 
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [
@@ -30,12 +30,16 @@ export const { auth, signIn, signOut } = NextAuth({
 
                         const response = await api.login( email, password );
 
+                        const accountApi = new AccountApi();
+
+                        const userResponse = await accountApi.getAccount( response.token );
+
                         const user = {
                             token: response.token,
-                            firstName: 'TODO',
-                            lastName: 'TODO',
-                            email: 'TODO'
-                        }
+                            firstName: userResponse.firstName,
+                            lastName: userResponse.lastName,
+                            email: userResponse.email
+                        };
 
                         return user;
                     }
