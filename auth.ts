@@ -6,6 +6,8 @@ import { z } from 'zod';
 import { AuthApi } from '@/app/lib/api/AuthApi';
 import { AccountApi } from '@/app/lib/api/AccountApi';
 import { ApiError, HttpError, NetworkError } from '@/app/lib/api/errors';
+import { User } from '@/app/lib/definitions';
+
 
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
@@ -34,11 +36,15 @@ export const { auth, signIn, signOut } = NextAuth({
 
                         const userResponse = await accountApi.getAccount( response.token );
 
-                        const user = {
+                        const verified = userResponse.emailValidated ? new Date() : null;
+
+                        const user: User = {
                             token: response.token,
+                            id: userResponse.id.toString(), // Required for NextAuth
                             firstName: userResponse.firstName,
                             lastName: userResponse.lastName,
-                            email: userResponse.email
+                            email: userResponse.email,
+                            emailVerified: verified,
                         };
 
                         return user;

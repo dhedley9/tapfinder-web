@@ -17,6 +17,22 @@ export const authConfig = {
 
             return true;
         },
+
+        async jwt( { token, user } ) {
+
+            if( user ) {
+                token.user = user;
+            }
+
+            return token;
+        },
+
+        async session( { session, token } ) {
+            
+            session.user = token.user as User;
+
+            return session;
+        },
     },
     providers: [], // This is overwritten in auth.ts
 } satisfies NextAuthConfig;
