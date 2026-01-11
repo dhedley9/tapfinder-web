@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { montserrat } from '@/app/ui/fonts';
 
-import VerifyEmailForm from '@/app/ui/verify-email-form'; 
+import VerifyEmailForm from '@/app/ui/auth/verify-email-form'; 
 import { auth } from "@/auth";  
 
 export default async function Page() {

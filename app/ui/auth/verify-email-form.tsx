@@ -4,7 +4,7 @@ import { useActionState } from 'react';
 import { verifyEmailHandler, VerifyEmailActionState } from '@/app/lib/actions/verify-email-handler';
 
 import ErrorNotice from '@/app/ui/error-notice';
-import VerificationCodeField from './verification-code-field';
+import VerificationCodeField from './fields/verification-code-field';
 
 export default function VerifyEmailForm( props: { email: string } ) {
 

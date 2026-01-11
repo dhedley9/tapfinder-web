@@ -5,7 +5,7 @@ import { loginHandler, LoginActionState } from '@/app/lib/actions/login-handler'
 import Link from 'next/link';
 
 import ErrorNotice from '@/app/ui/error-notice';
-import PasswordField from './password-field';
+import PasswordField from './fields/password-field';
 
 export default function LoginForm() {
 

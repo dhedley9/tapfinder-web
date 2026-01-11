@@ -4,7 +4,7 @@ import { useActionState } from 'react';
 import { registerHandler, RegisterActionState } from '@/app/lib/actions/register-handler';
 
 import ErrorNotice from '@/app/ui/error-notice';
-import PasswordField from './password-field';
+import PasswordField from './fields/password-field';
 
 export default function RegisterForm() {
 

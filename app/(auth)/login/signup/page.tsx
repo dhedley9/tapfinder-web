@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { montserrat } from '@/app/ui/fonts';
-import RegisterForm from '@/app/ui/register-form';
+import RegisterForm from '@/app/ui/auth/register-form';
 
 export default function Page() {
     
