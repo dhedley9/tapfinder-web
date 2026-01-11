@@ -10,7 +10,7 @@ import { signIn } from '@/auth';
 export type RegisterActionState = {
     error: string[] | null;
     values: {
-        email: string;
+        email: string,
         first_name: string,
         last_name: string,
     };
