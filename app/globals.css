@@ -1,26 +1,262 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+    --max-width: 1100px;
+    --orange: #f1a10d;
+    --dark-orange: #df9a1a;
+    --black: #000000;
+    --grey: #e4e4e4;
+    --dark-grey: #a2a2a2;
+    --red: #ff0000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*{
+    box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.tf-content-wrap{
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*----------------------------------------
+# Header
+----------------------------------------*/
+
+.tf-header{
+    font-size: 18px;
+    padding: 20px;
+}
+
+.tf-header .tf-content-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+
+.tf-header .tf-header-logo img{
+    width: 200px;
+    height: auto;
+}
+
+/* Menu */
+
+.tf-header .tf-header-menu ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.tf-header .tf-header-menu ul a{
+    border-radius: 30px;
+    padding: 12px 17px;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.tf-header .tf-header-menu ul a:hover{
+    background-color: var(--grey);
+}
+
+/* Actions */
+
+.tf-header .tf-header-actions{
+    width: 200px;
+    text-align: right;
+}
+
+/*----------------------------------------
+# Buttons
+----------------------------------------*/
+
+.tf-button{
+    background-color: var(--orange);
+    color: #fff;
+    border-radius: 30px;
+    padding: 12px 17px;
+    font-weight: bold;
+    text-decoration: none;
+    border-color: var(--orange);
+    cursor: pointer;
+    border-width: 0;
+    font-size: 18px;
+}
+
+.tf-button:hover{
+    background-color: var(--dark-orange);
+}
+
+/*----------------------------------------
+# Auth Page
+----------------------------------------*/
+
+.tf-auth-page{
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 60px;
+}
+
+.tf-auth-page .tf-auth-page-logo{
+    text-align: center;
+}
+
+.tf-auth-page .tf-auth-page-logo img{
+    width: 60px;
+    height: auto;
+}
+
+.tf-auth-page h1{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+}
+
+/* Form */
+
+.tf-auth-page .tf-auth-page-form .tf-auth-page-form-field{
+    margin-bottom: 20px;
+}
+
+.tf-auth-page .tf-auth-page-form .tf-auth-page-form-field label{
+    display: block;
+    font-size: 18px;
+}
+
+.tf-auth-page .tf-auth-page-form .tf-auth-page-form-field input[type="text"],
+.tf-auth-page .tf-auth-page-form .tf-auth-page-form-field input[type="password"]{
+    display: block;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 7px 10px;
+    width: 100%;
+    margin-top: 5px;
+    border: solid 1px var(--dark-grey);
+}
+
+.tf-auth-page .tf-auth-page-form .tf-button{
+    display: block;
+    width: 100%;
+}
+
+.tf-auth-page .tf-auth-page-forgot{
+    color: var(--black);
+    margin-bottom: 30px;
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.tf-auth-page .tf-auth-page-forgot:hover{
+    text-decoration: underline;
+}
+
+/* Sign Up */
+
+.tf-auth-page .tf-auth-page-signup {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.tf-auth-page .tf-auth-page-signup .tf-auth-page-signup-heading{
+    font-size: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.tf-auth-page .tf-auth-page-signup .tf-auth-page-signup-link{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--black);
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tf-auth-page .tf-auth-page-signup .tf-auth-page-signup-link:hover{
+    text-decoration: underline;
+}
+
+/*----------------------------------------
+# Error Notices
+----------------------------------------*/
+
+.tf-error-notice{
+    display: flex;
+    align-items: center;
+    background-color: var(--red);
+    color: #ffffff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.tf-error-notice svg{
+    width: 30px;
+    margin-right: 5px;
+}
+
+.tf-error-notice svg path{
+    fill: #ffffff;
+}
+
+/*----------------------------------------
+# Password Field
+----------------------------------------*/
+
+.tf-password-field{
+    position: relative;
+}
+
+.tf-password-field input[type="text"],
+.tf-password-field input[type="password"]{
+    padding-right: 45px;
+}
+
+.tf-password-field button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+/*----------------------------------------
+# Verification Codes
+----------------------------------------*/
+
+.tf-verification-code-wrap .tf-verification-code-label{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tf-verification-code-wrap .tf-verification-code{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.tf-verification-code-wrap .tf-verification-code .tf-verification-code-digits{
+    display: flex;
+}
+
+.tf-verification-code-wrap .tf-verification-code .tf-verification-code-digits input{
+    width: 30px;
+    font-size: 25px;
+    padding: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.tf-verification-code-wrap .tf-verification-code .tf-verification-code-digits .tf-verification-code-separator{
+    font-size: 34px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
