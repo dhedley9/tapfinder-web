@@ -225,3 +225,38 @@
     cursor: pointer;
     opacity: 0.4;
 }
+
+/*----------------------------------------
+# Verification Codes
+----------------------------------------*/
+
+.tf-verification-code-wrap .tf-verification-code-label{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tf-verification-code-wrap .tf-verification-code{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.tf-verification-code-wrap .tf-verification-code .tf-verification-code-digits{
+    display: flex;
+}
+
+.tf-verification-code-wrap .tf-verification-code .tf-verification-code-digits input{
+    width: 30px;
+    font-size: 25px;
+    padding: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.tf-verification-code-wrap .tf-verification-code .tf-verification-code-digits .tf-verification-code-separator{
+    font-size: 34px;
+    margin-left: 5px;
+    margin-right: 10px;
+}

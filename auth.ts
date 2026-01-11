@@ -9,7 +9,7 @@ import { ApiError, HttpError, NetworkError } from '@/app/lib/api/errors';
 import { User } from '@/app/lib/definitions';
 
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, signIn, signOut, unstable_update } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
