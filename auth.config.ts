@@ -13,11 +13,14 @@ export const authConfig = {
             const user = auth?.user as User | undefined;
 
             const isLoginPage  = nextUrl.pathname.startsWith( '/login' );
+            const isLogoutPage = nextUrl.pathname.startsWith( '/logout' );
             const isVerifyPage = nextUrl.pathname.startsWith( '/login/verify' );
 
-            if( user && !user.emailVerified && !isVerifyPage ) {
+            if( isLogoutPage ) {
+                return true;
+            }
 
-                console.log( 'Redirecting to /login/verify', new Date() );
+            if( user && !user.emailVerified && !isVerifyPage ) {
                 return Response.redirect( new URL( '/login/verify', nextUrl ) );
             }
 
