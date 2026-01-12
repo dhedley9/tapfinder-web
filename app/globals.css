@@ -88,6 +88,45 @@
     background-color: var(--dark-orange);
 }
 
+/* Loading */
+
+.tf-button.loading::after{
+    content: '';
+    width: 30px;
+    aspect-ratio: 4;
+    background: radial-gradient(circle closest-side,#fff 90%,#0000) 0/calc(100%/3) 100% space;
+    clip-path: inset(0 100% 0 0);
+    animation: loader 1s steps(4) infinite;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+@keyframes loader {
+    to{ 
+        clip-path: inset(0 -34% 0 0)
+    }
+}
+
+/* Complete */
+
+.tf-button.complete {
+    position: relative;
+    padding-right: 47px;
+}
+
+.tf-button.complete:after {
+    content: '';
+    position: absolute;
+    top: calc( 50% - 2px );
+    right: 20px;
+    width: 7px;
+    height: 14px;
+    border: solid #ffffff;
+    border-width: 0 4px 4px 0;
+    transform: translateY(-50%) rotate(45deg);
+    border-radius: 2px;
+}
+
 /*----------------------------------------
 # Auth Page
 ----------------------------------------*/
@@ -177,6 +216,49 @@
 
 .tf-auth-page .tf-auth-page-signup .tf-auth-page-signup-link:hover{
     text-decoration: underline;
+}
+
+/* Resend */
+
+.tf-auth-page .tf-auth-page-resend {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.tf-auth-page .tf-auth-page-resend .tf-auth-page-resend-heading{
+    font-size: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.tf-auth-page .tf-auth-page-resend .tf-resend-verify-email .tf-resend-verify-email-button{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--black);
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0;
+}
+
+.tf-auth-page .tf-auth-page-resend .tf-resend-verify-email .tf-resend-verify-email-button:hover{
+    text-decoration: underline;
+}
+
+.tf-auth-page .tf-auth-page-resend .tf-resend-verify-email .tf-resend-verify-email-button.loading:after {
+    background: radial-gradient(circle closest-side, #000000 90%, #0000) 0 / 33.3333% 100% space;
+}
+
+.tf-auth-page .tf-auth-page-resend .tf-resend-verify-email .tf-resend-verify-email-button.complete{
+    padding-right: 30px;
+}
+
+.tf-auth-page .tf-auth-page-resend .tf-resend-verify-email .tf-resend-verify-email-button.complete:after{
+    border-color: #000000;
+    right: 5px;
 }
 
 /*----------------------------------------

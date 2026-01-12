@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { montserrat } from '@/app/ui/fonts';
 
 import VerifyEmailForm from '@/app/ui/auth/verify-email-form'; 
+import ResendVerifyEmailForm from '@/app/ui/auth/resend-verify-email-form'; 
 import { auth } from "@/auth";  
 
 export default async function Page() {
@@ -34,9 +35,10 @@ export default async function Page() {
 
             <VerifyEmailForm email={ email } />
 
-            <div className="tf-auth-page-signup">
-                <h2 className="tf-auth-page-signup-heading">Haven't received an email?</h2>
-                <Link className="tf-auth-page-signup-link" href={`/login`}>Resend now &gt;</Link>
+            <div className="tf-auth-page-resend">
+                <h2 className="tf-auth-page-resend-heading">Haven't received an email?</h2>
+
+                <ResendVerifyEmailForm />
             </div>
         </div>
     )

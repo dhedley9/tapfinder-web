@@ -40,4 +40,11 @@ export class AuthApi extends TapFinderAPI{
 
         return response;
     }
+
+    async resendVerifyEmail( token: string ) {
+
+        const response = await this.post( '/resendVerifyEmail', {}, token );
+
+        return response;
+    }
 }
