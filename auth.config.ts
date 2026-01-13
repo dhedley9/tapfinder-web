@@ -1,6 +1,7 @@
 import type { NextAuthConfig } from 'next-auth';
-import type { User } from '@/app/lib/definitions';
+import type { User, RedirectRuleArgs } from '@/app/lib/definitions';
 import { AccountApi } from '@/app/lib/api/AccountApi';
+import { redirectRules } from '@/auth.redirects';
  
 export const authConfig = {
     pages: {
@@ -10,30 +11,26 @@ export const authConfig = {
         
         authorized( { auth, request: { nextUrl } } ) {
 
-            const user = auth?.user as User | undefined;
-
-            const isLoginPage  = nextUrl.pathname.startsWith( '/login' );
+            const user         = auth?.user as User | undefined;
             const isLogoutPage = nextUrl.pathname.startsWith( '/logout' );
-            const isVerifyPage = nextUrl.pathname.startsWith( '/login/verify' );
 
+            // Always short-circuit the logout page
             if( isLogoutPage ) {
                 return true;
             }
 
-            if( user && !user.emailVerified && !isVerifyPage ) {
-                return Response.redirect( new URL( '/login/verify', nextUrl ) );
+            const args: RedirectRuleArgs = {
+                user: user,
+                path: nextUrl.pathname
             }
 
-            if( isVerifyPage && user && user.emailVerified ) {
-                return Response.redirect( new URL( '/account', nextUrl ) );
-            }
+            for( let i = 0; i < redirectRules.length; i++ ) {
 
-            if( isVerifyPage && !user ) {
-                return Response.redirect( new URL( '/login', nextUrl ) );
-            }
+                const rule = redirectRules[i];
 
-            if( user && isLoginPage && !isVerifyPage ) {
-                return Response.redirect( new URL( '/account', nextUrl ) );
+                if( rule.when( args) ) {
+                    return Response.redirect( new URL( rule.redirectTo, nextUrl ) );
+                }
             }
 
             return true;
