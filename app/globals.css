@@ -82,6 +82,7 @@
     cursor: pointer;
     border-width: 0;
     font-size: 18px;
+    display: inline-block;
 }
 
 .tf-button:hover{
@@ -341,4 +342,38 @@
     font-size: 34px;
     margin-left: 5px;
     margin-right: 10px;
+}
+
+/*----------------------------------------
+# 2FA Enable Page
+----------------------------------------*/
+
+.tf-2fa-enable .tf-2fa-enable-subheading{
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.tf-2fa-enable .tf-2fa-enable-bold{
+    font-weight: bold;
+}
+
+.tf-2fa-enable ol{
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.tf-2fa-enable ol li{
+    margin-bottom: 10px;
+}
+
+.tf-2fa-enable .tf-auth-page-signup{
+    margin-top: 20px;
+}
+
+.tf-2fa-enable .tf-auth-page-signup .tf-auth-page-signup-heading {
+    font-size: 16px;
+}
+
+.tf-2fa-enable .tf-auth-page-signup .tf-auth-page-signup-link {
+    font-size: 18px;
 }
