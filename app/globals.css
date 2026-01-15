@@ -377,3 +377,51 @@
 .tf-2fa-enable .tf-auth-page-signup .tf-auth-page-signup-link {
     font-size: 18px;
 }
+
+/*----------------------------------------
+# 2FA Configure Page
+----------------------------------------*/
+
+.tf-2fa-configure h1{
+    font-size: 34px;
+}
+
+.tf-2fa-configure .tf-2fa-configure-subheading{
+    text-align: left;
+    margin: 30px 0 20px 0;
+    font-size: 20px;
+}
+
+.tf-2fa-configure .tf-2fa-configure-qrcode{
+    text-align: center;
+}
+
+.tf-2fa-configure .tf-2fa-configure-secret{
+    background: #EFEFEF;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20p;
+    margin-bottom: 40px;
+}
+
+.tf-2fa-configure .tf-2fa-configure-button-wrap{
+    text-align: center;
+}
+
+.tf-2fa-configure .tf-2fa-configure-cancel-wrap{
+    text-align: center;
+}
+
+.tf-2fa-configure .tf-2fa-configure-cancel-wrap .tf-2fa-configure-cancel{
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    color: var(--black);
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tf-2fa-configure .tf-2fa-configure-cancel-wrap .tf-2fa-configure-cancel:hover {
+    text-decoration: underline;
+}

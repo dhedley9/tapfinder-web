@@ -47,4 +47,11 @@ export class AuthApi extends TapFinderAPI{
 
         return response;
     }
+
+    async configureAppFactor( token: string ) {
+
+        const response = await this.post( '/configureAppFactor', {}, token );
+
+        return response;
+    }
 }
