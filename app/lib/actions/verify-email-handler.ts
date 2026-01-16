@@ -15,6 +15,7 @@ export type VerifyEmailActionState = {
 
 export async function verifyEmailHandler( prevState: VerifyEmailActionState, formData: FormData ) {
 
+    // TODO: Standardise form states
     const state: VerifyEmailActionState = {
         error: null,
         values: {
@@ -25,6 +26,7 @@ export async function verifyEmailHandler( prevState: VerifyEmailActionState, for
     const length = 6;
     const digits: string[] = [];
 
+    // TODO: Separate into helper function
     for( let i = 0; i < length; i++ ) {
 
         const digit = formData.get( 'verification_code_digit_' + ( i + 1 ) );
