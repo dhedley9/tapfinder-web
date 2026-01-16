@@ -29,6 +29,14 @@ export const redirectRules: RedirectRule[] = [
         redirectTo: '/login'
     },
 
+    // Redirect: /login/2fa => /login
+    {
+        when: ( { user, path } ) => {
+            return path.startsWith( '/login/2fa' ) && !user;
+        },
+        redirectTo: '/login'
+    },
+
     // Redirect: /login => /account
     {
         when: ( { user, path } ) => {
