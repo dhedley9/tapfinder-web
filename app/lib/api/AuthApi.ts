@@ -54,4 +54,15 @@ export class AuthApi extends TapFinderAPI{
 
         return response;
     }
+
+    async enableAppFactor( code: string, token: string ) {
+
+        const data = {
+            'totp': code,
+        };
+
+        const response = await this.post( '/enableAppFactor', data, token );
+
+        return response;
+    }
 }

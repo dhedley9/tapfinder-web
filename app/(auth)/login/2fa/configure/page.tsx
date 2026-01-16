@@ -43,7 +43,7 @@ export default async function Page() {
                 <pre className="tf-2fa-configure-secret">{ result.secret }</pre>
 
                 <div className="tf-2fa-configure-button-wrap">
-                    <Link className="tf-button" href={`/login/2fa/configure`}>Continue &gt;</Link>
+                    <Link className="tf-button" href={`/login/2fa/verify`}>Continue &gt;</Link>
                 </div>
                 
                 <div className="tf-2fa-configure-cancel-wrap">

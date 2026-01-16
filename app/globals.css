@@ -425,3 +425,43 @@
 .tf-2fa-configure .tf-2fa-configure-cancel-wrap .tf-2fa-configure-cancel:hover {
     text-decoration: underline;
 }
+
+/*----------------------------------------
+# 2FA Verify Page
+----------------------------------------*/
+
+.tf-2fa-verify h1{
+    font-size: 34px;
+}
+
+.tf-2fa-verify .tf-2fa-verify-subheading{
+    text-align: center;
+    margin: 30px 0 20px 0;
+    font-size: 20px;
+}
+
+.tf-2fa-verify .tf-verification-code-wrap{
+    margin: 30px 0;
+}
+
+.tf-2fa-verify .tf-2fa-verify-button-wrap{
+    text-align: center;
+}
+
+.tf-2fa-verify .tf-2fa-verify-cancel-wrap{
+    text-align: center;
+}
+
+.tf-2fa-verify .tf-2fa-verify-cancel-wrap .tf-2fa-verify-cancel{
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    color: var(--black);
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tf-2fa-verify .tf-2fa-verify-cancel-wrap .tf-2fa-verify-cancel:hover {
+    text-decoration: underline;
+}
