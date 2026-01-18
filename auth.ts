@@ -32,6 +32,22 @@ export const { auth, signIn, signOut, unstable_update } = NextAuth({
 
                         const response = await api.login( email, password );
 
+                        if( response.twoFactorRequired ) {
+                            
+                            const user: User = {
+                                token: response.token,
+                                id: 'temp_' + email,
+                                firstName: '',
+                                lastName: '',
+                                email: email,
+                                emailVerified: null,
+                                twoFactorEnabled: true,
+                                twoFactorVerified: false
+                            }
+
+                            return user;
+                        }
+
                         const accountApi = new AccountApi();
 
                         const userResponse = await accountApi.getAccount( response.token );
@@ -45,6 +61,8 @@ export const { auth, signIn, signOut, unstable_update } = NextAuth({
                             lastName: userResponse.lastName,
                             email: userResponse.email,
                             emailVerified: verified,
+                            twoFactorEnabled: userResponse.twoFactorEnabled,
+                            twoFactorVerified: false
                         };
 
                         return user;

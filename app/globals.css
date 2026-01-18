@@ -465,3 +465,25 @@
 .tf-2fa-verify .tf-2fa-verify-cancel-wrap .tf-2fa-verify-cancel:hover {
     text-decoration: underline;
 }
+
+/*----------------------------------------
+# 2FA Page
+----------------------------------------*/
+
+.tf-2fa-submit h1{
+    font-size: 34px;
+}
+
+.tf-2fa-submit .tf-2fa-submit-subheading{
+    text-align: center;
+    margin: 30px 0 20px 0;
+    font-size: 20px;
+}
+
+.tf-2fa-submit .tf-verification-code-wrap{
+    margin: 40px 0;
+}
+
+.tf-2fa-submit .tf-2fa-submit-button-wrap{
+    text-align: center;
+}

@@ -3,6 +3,7 @@ import { TapFinderAPI } from "./BaseApi";
 type LoginResponse = {
     token: string;
     message: string;
+    twoFactorRequired: boolean
 };
 
 export class AuthApi extends TapFinderAPI{
@@ -62,6 +63,19 @@ export class AuthApi extends TapFinderAPI{
         };
 
         const response = await this.post( '/enableAppFactor', data, token );
+
+        return response;
+    }
+
+    async twoFactorVerify( code: string, token: string ) {
+
+        const data = {
+            'factor': 'app',
+            'totp': code,
+            'challengeToken': token
+        };
+
+        const response = await this.post( '/twoFactorVerify', data );
 
         return response;
     }

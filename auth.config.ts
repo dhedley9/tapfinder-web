@@ -36,7 +36,7 @@ export const authConfig = {
             return true;
         },
 
-        async jwt( { token, user, trigger } ) {
+        async jwt( { token, user, trigger, session } ) {
 
             if( user ) {
                 token.user = user;
@@ -47,6 +47,13 @@ export const authConfig = {
 
                 const tokenUser  = token.user as User;
                 const accountApi = new AccountApi();
+
+                // If the two factor token is stored in the session (two factor has just been completed)
+                // Replace the temporary access token with the full token and reload the user
+                if( session.twoFactorToken ) {
+                    tokenUser.token = session.twoFactorToken;
+                    delete session.twoFactorToken;
+                }
 
                 const userResponse = await accountApi.getAccount( tokenUser.token );
 
@@ -59,6 +66,8 @@ export const authConfig = {
                     lastName: userResponse.lastName,
                     email: userResponse.email,
                     emailVerified: verified,
+                    twoFactorEnabled: userResponse.twoFactorEnabled,
+                    twoFactorVerified: tokenUser.twoFactorVerified,
                 };
 
                 token.user = updatedUser;
@@ -75,7 +84,7 @@ export const authConfig = {
         },
 
         async redirect( { url, baseUrl } ) {
-
+            
             if( url === `${baseUrl}/login` ) {
                 return `${baseUrl}/login/verify`;
             }

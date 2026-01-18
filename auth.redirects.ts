@@ -5,10 +5,18 @@ import { RedirectRule } from "@/app/lib/definitions";
 
 export const redirectRules: RedirectRule[] = [
 
+    // Redirect: (any) => /login/2fa
+    {
+        when: ( { user, path } ) => {
+            return path !== '/login/2fa' && !!user && user.twoFactorEnabled && !user.twoFactorVerified 
+        },
+        redirectTo: '/login/2fa'
+    },
+
     // Redirect: (any) => /login/verify
     {
         when: ( { user, path } ) => {
-            return path !== '/login/verify' && !!user && !user.emailVerified 
+            return path !== '/login/verify' && path !== '/login/2fa' && !!user && !user.emailVerified 
         },
         redirectTo: '/login/verify'
     },
@@ -33,6 +41,18 @@ export const redirectRules: RedirectRule[] = [
     {
         when: ( { user, path } ) => {
             return path.startsWith( '/login/2fa' ) && !user;
+        },
+        redirectTo: '/login'
+    },
+
+    // Redirect: /login/2fa/enable => /account
+    // Redirect: /login/2fa/configure => /account
+    // Redirect: /login/2fa/verify => /account
+    {
+        when: ( { user, path } ) => {
+            return ( path === '/login/2fa/enable' ||  path === '/login/2fa/configure' || path === '/login/2fa/verify'  ) 
+            && !!user
+            && user.twoFactorEnabled
         },
         redirectTo: '/login'
     },

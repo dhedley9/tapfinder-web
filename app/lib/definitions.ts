@@ -4,8 +4,10 @@ export type User = {
     firstName: string,
     lastName: string,
     email: string,
-    emailVerified: Date | null
-}
+    emailVerified: Date | null,
+    twoFactorEnabled: boolean,
+    twoFactorVerified: boolean
+};
 
 export type RedirectRuleArgs = {
     user?: User;
